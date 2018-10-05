@@ -11,10 +11,4 @@ Write a password validation service, meant to be configurable via IoC (using dep
 
 ·         Must not contain any sequence of characters immediately followed by the same sequence.
 
- 
-
-For any questions or clarifications, please contact me at rostic.sheykhet@mckesson.com
-
- 
-
 Include all artifacts in a zip file and please let us know how many hours you spent on the programming problem. The project should include a build capability in one of the following tools, Eclipse, IntelliJ, ant, or maven. The project should be ready for insertion into a production system. Show tests for the service and any constituent classes involved in fulfillment of the service. Also, show how to access and use the service at runtime.
