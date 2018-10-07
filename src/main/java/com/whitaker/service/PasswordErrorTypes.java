@@ -1,0 +1,10 @@
+package com.whitaker.service;
+
+public enum PasswordErrorTypes {
+	
+	LENGTH_VALIDATION_ERROR,
+	CHARACTER_VALIDATION_ERROR,
+	NUMERIC_VALIDATION_ERROR,
+	CHARACTER_SEQUENCE_VALIDATION_ERROR
+
+}
