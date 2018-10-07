@@ -1,5 +1,7 @@
 package com.whitaker.models;
 
+import java.util.ArrayList;
+
 public class PasswordValidationResult implements IPasswordValidationResult {
 	
 	/**
@@ -7,12 +9,8 @@ public class PasswordValidationResult implements IPasswordValidationResult {
 	 */
 	IPassword password;
 	
-	PasswordErrorType passwordErrorType;
+	ArrayList<PasswordErrorType> passwordErrorTypes;
 	
-	
-	public PasswordValidationResult() {
-		// TODO Auto-generated constructor stub
-	}
 	
 	/**
 	 * 
@@ -21,6 +19,7 @@ public class PasswordValidationResult implements IPasswordValidationResult {
 	public PasswordValidationResult( IPassword password) {
 		super();
 		this.password = password;
+		this.passwordErrorTypes = new ArrayList<PasswordErrorType>();
 	}
 
 	/**
@@ -40,16 +39,36 @@ public class PasswordValidationResult implements IPasswordValidationResult {
 	/**
 	 * @return the passwordErrorType
 	 */
-	public PasswordErrorType getPasswordErrorType() {
-		return passwordErrorType;
+	public ArrayList<PasswordErrorType> getPasswordErrorTypes() {
+		return passwordErrorTypes;
 	}
 
 	/**
 	 * @param passwordErrorType the passwordErrorType to set
 	 */
-	public void setPasswordErrorType(PasswordErrorType passwordErrorType) {
-		this.passwordErrorType = passwordErrorType;
+	public void setPasswordErrorTypes(ArrayList<PasswordErrorType> passwordErrorTypes) {
+		this.passwordErrorTypes = passwordErrorTypes;
 	}
+
+	/* (non-Javadoc)
+	 * @see com.whitaker.models.IPasswordValidationResult#addPasswordErrorType(com.whitaker.models.PasswordErrorType)
+	 */
+	@Override
+	public boolean addPasswordErrorType(PasswordErrorType errortype) {
+		return this.passwordErrorTypes.add(errortype);		
+	}
+
+	/* (non-Javadoc)
+	 * @see com.whitaker.models.IPasswordValidationResult#removePasswordErrorType(com.whitaker.models.PasswordErrorType)
+	 */
+	@Override
+	public boolean removePasswordErrorType(PasswordErrorType errortype) {
+		return this.passwordErrorTypes.remove(errortype);
+		
+	}
+	
+	
+	
 	
 	
 	
