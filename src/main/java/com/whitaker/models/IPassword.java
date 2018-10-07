@@ -10,6 +10,7 @@ import java.io.Serializable;
 public interface IPassword extends Serializable {
 	
 	public String getPasswordText();
+	
 	public void setPasswordText(String password);
 
 }
