@@ -1,4 +1,4 @@
-package com.whitaker.service;
+package com.whitaker.models;
 
 
 public class PasswordValidationError extends Exception {
@@ -20,6 +20,5 @@ public class PasswordValidationError extends Exception {
 		this.type =type;
 		
 	}
-
 
 }

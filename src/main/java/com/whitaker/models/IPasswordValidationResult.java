@@ -1,14 +1,20 @@
-/**
- * 
- */
 package com.whitaker.models;
 
+import java.io.Serializable;
+
+
 /**
- * @author macadmin
+ * @author Darnell Whitaker
  *
  */
-public interface IPasswordValidationResult {
+public interface IPasswordValidationResult extends Serializable {
 	
-	public String getPasswordText();
+	public IPassword getPassword();
+	
+	public void setPassword(IPassword password);
+	
+	public PasswordErrorType getPasswordErrorType();
+	
+	public void setPasswordErrorType( PasswordErrorType errortype);
 
 }

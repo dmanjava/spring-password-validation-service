@@ -1,6 +1,6 @@
-package com.whitaker.service;
+package com.whitaker.models;
 
-public enum PasswordErrorTypes {
+public enum PasswordErrorType {
 	
 	LENGTH_VALIDATION_ERROR,
 	CHARACTER_VALIDATION_ERROR,
