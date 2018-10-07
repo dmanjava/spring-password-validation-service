@@ -4,7 +4,7 @@
 package com.whitaker.service;
 
 /**
- * @author macadmin
+ * @author Darnell Whitaker
  *
  */
 public interface IPasswordValidationService {

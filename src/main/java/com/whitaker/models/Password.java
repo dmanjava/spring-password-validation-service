@@ -5,16 +5,20 @@ public class Password implements IPassword {
 	String password;
 
 	public Password() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
-	
+	/**
+	 * return the passwore
+	 */
 	public String getPasswordText() {
-		// TODO Auto-generated method stub
+		
 		return this.password;
 	}
 
-	
+	/**
+	 * set the password
+	 */
 	public void setPasswordText(String password) {
 		this.password = password;
 
