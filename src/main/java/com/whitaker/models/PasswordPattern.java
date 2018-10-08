@@ -30,8 +30,8 @@ public class PasswordPattern implements IPasswordPattern {
 	/**
 	 * the full pattern for one lowercase and one number
 	 */
-	public static final String FULL_REGEX_PATTERN = "("+LOWERCASE_REGEX_PATTERN 
-			+ ")(" + NUMBER_REGEX_PATTERN +")";
+	public static final String FULL_REGEX_PATTERN = NUMBER_REGEX_PATTERN +
+			LOWERCASE_REGEX_PATTERN ;
 	
 	private IPassword password;
 	private Pattern thePattern;
@@ -85,8 +85,21 @@ public class PasswordPattern implements IPasswordPattern {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		String patterntext = FULL_REGEX_PATTERN;
-		String passwordtext = "2SDFFr";
+		// String patterntext = FULL_REGEX_PATTERN;
+		String patterntext = LOWERCASE_REGEX_PATTERN;
+		String passwordtext = "SDFFr";
+		try {
+			PasswordPattern pattern = new PasswordPattern(new Password(passwordtext), patterntext);
+			if(!pattern.matches()) {
+				System.out.println("does not match.");
+			} else {
+				System.out.println("Pattern ok!");
+			}
+		} catch (PasswordValidationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		patterntext = NUMBER_REGEX_PATTERN;
 		try {
 			PasswordPattern pattern = new PasswordPattern(new Password(passwordtext), patterntext);
 			if(!pattern.matches()) {
@@ -99,6 +112,18 @@ public class PasswordPattern implements IPasswordPattern {
 			e.printStackTrace();
 		}
 
+		patterntext = FULL_REGEX_PATTERN;
+		try {
+			PasswordPattern pattern = new PasswordPattern(new Password(passwordtext), patterntext);
+			if(!pattern.matches()) {
+				System.out.println("does not match.");
+			} else {
+				System.out.println("Pattern ok!");
+			}
+		} catch (PasswordValidationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
