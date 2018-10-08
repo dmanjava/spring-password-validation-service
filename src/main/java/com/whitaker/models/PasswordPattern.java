@@ -20,12 +20,18 @@ public class PasswordPattern implements IPasswordPattern {
 	/**
 	 * regex pattern must contain at least one lower case character
 	 */
-	public static final String LOWERCASE_REGEX_PATTERN = "((?=.*[a-z]))";
+	public static final String LOWERCASE_REGEX_PATTERN = "(.*[a-z].*)";
 	
 	/**
 	 * regex pattern must contain at least one NUMBER
 	 */
-	public static final String NUMBER_REGEX_PATTERN = "(?=.*\\d)";
+	public static final String NUMBER_REGEX_PATTERN = "(.*\\d.*)";
+	
+	/**
+	 * the full pattern for one lowercase and one number
+	 */
+	public static final String FULL_REGEX_PATTERN = "("+LOWERCASE_REGEX_PATTERN 
+			+ ")(" + NUMBER_REGEX_PATTERN +")";
 	
 	private IPassword password;
 	private Pattern thePattern;
@@ -72,20 +78,15 @@ public class PasswordPattern implements IPasswordPattern {
 	 */
 	public boolean matches() {
 		this.matcher = this.thePattern.matcher(this.password.getPasswordText());
-		boolean b = this.matcher.matches();
-		if(!b) {
-			System.out.println("does not match");
-		}
-		
-		return b;
+		return this.matcher.matches();
 	}
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		String patterntext = LOWERCASE_REGEX_PATTERN;
-		String passwordtext = "123123SDFSDF";
+		String patterntext = FULL_REGEX_PATTERN;
+		String passwordtext = "2SDFSDF";
 		try {
 			PasswordPattern pattern = new PasswordPattern(new Password(passwordtext), patterntext);
 			if(!pattern.matches()) {

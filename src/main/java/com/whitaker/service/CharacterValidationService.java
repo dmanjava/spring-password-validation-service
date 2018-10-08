@@ -28,7 +28,8 @@ public class CharacterValidationService extends ValidationService implements ICh
 	/**
 	 * not enough lowercase character message
 	 */
-	public static final String NOT_ENOUGH_LOWERCASE = "Password must contain at least" + " 1 lowercase character.";
+	public static final String NOT_ENOUGH_LOWERCASE = "Password must contain at least" + " 1 lowercase and"
+			+ " 1 numberic character.";
 
 	/**
 	 * invalid character sequence messages
@@ -67,9 +68,9 @@ public class CharacterValidationService extends ValidationService implements ICh
 	/**
 	 * 
 	 */
-	public ArrayList<IPasswordValidationResult> validateAlphaCharacters() throws PasswordValidationException {
+	public ArrayList<IPasswordValidationResult> validateCharacters() throws PasswordValidationException {
 		// check that there is at least on lower case character
-		if (this.passwordPattern.matches()) {
+		if (!this.passwordPattern.matches()) {
 			PasswordValidationResult result = new PasswordValidationResult(this.getPassword(), NOT_ENOUGH_LOWERCASE,
 					PasswordErrorType.CHARACTER_VALIDATION_ERROR);
 			this.addValidationResult(result);
@@ -105,7 +106,7 @@ public class CharacterValidationService extends ValidationService implements ICh
 					IPasswordPattern pattern = new PasswordPattern(pword, PasswordPattern.LOWERCASE_REGEX_PATTERN);
 					// create our character servers and do validation
 					ICharacterValidationService cservice = new CharacterValidationService(pword, pattern);
-					results = cservice.validateAlphaCharacters();
+					results = cservice.validateCharacters();
 					for (int i = 0; i < results.size(); i++) {
 						IPasswordValidationResult r = results.get(i);
 						System.out.println("Got " + results.size() + " error(s) with message \n\t - "

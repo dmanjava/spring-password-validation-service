@@ -15,20 +15,16 @@ public class PasswordValidationService extends ValidationService implements IPas
 	
 	private ILengthValidationService lenghService;
 	private ICharacterValidationService characterService;
-	private INumericValidationService numericService;
 	
-
 	/**
 	 * 
 	 */
 	public PasswordValidationService( final IPassword password,
 			final ILengthValidationService lengthservice,
-			final ICharacterValidationService characterservice,
-			final INumericValidationService numericservice) throws PasswordValidationException {
+			final ICharacterValidationService characterservice) throws PasswordValidationException {
 		super(password);
 		this.lenghService = lengthservice;
 		this.characterService = characterservice;
-		this.numericService = numericservice;
 	}
 
 

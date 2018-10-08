@@ -20,7 +20,7 @@ public interface ICharacterValidationService {
 	 * @param password
 	 * @return
 	 */
-	public ArrayList<IPasswordValidationResult> validateAlphaCharacters() throws PasswordValidationException;
+	public ArrayList<IPasswordValidationResult> validateCharacters() throws PasswordValidationException;
 	
 	
 	/**
