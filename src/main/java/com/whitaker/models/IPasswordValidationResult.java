@@ -13,12 +13,7 @@ public interface IPasswordValidationResult extends Serializable {
 	
 	public void setPassword(IPassword password);
 	
-	public ArrayList<PasswordErrorType> getPasswordErrorTypes();
+	public PasswordErrorType getPasswordErrorType();
 	
-	public void setPasswordErrorTypes( ArrayList<PasswordErrorType> errortypes);
-	
-	public boolean addPasswordErrorType ( PasswordErrorType errortype);
-	
-	public boolean removePasswordErrorType ( PasswordErrorType errortype);
-
+	public String getPasswordErrorMessage();
 }

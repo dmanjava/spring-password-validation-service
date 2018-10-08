@@ -4,12 +4,12 @@ public class Password implements IPassword {
 	
 	String password;
 
-	public Password() {
-		
+	public Password( final String pword) {
+		this.password = pword;
 	}
 
 	/**
-	 * return the passwore
+	 * return the password 
 	 */
 	public String getPasswordText() {
 		

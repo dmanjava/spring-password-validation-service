@@ -3,21 +3,23 @@
  */
 package com.whitaker.service;
 
+import java.util.ArrayList;
+
 import com.whitaker.models.IPassword;
 import com.whitaker.models.IPasswordValidationResult;
-import com.whitaker.models.PasswordValidationError;
+import com.whitaker.models.PasswordValidationException;
 
 /**
  * @author Darnell Whitaker
  *
  */
-public interface ILengthValidationService {
+public interface ILengthValidationService extends IValidationService {
 	
 	/**
 	 * 
 	 * @param password
 	 * @return
 	 */
-	public IPasswordValidationResult validateLength( IPassword password ) throws PasswordValidationError;
+	public ArrayList<IPasswordValidationResult> validateLength() throws PasswordValidationException;
 
 }

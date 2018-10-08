@@ -1,11 +1,11 @@
 package com.whitaker.models;
 
 
-public class PasswordValidationError extends Exception {
+public class PasswordValidationException extends Exception {
 
 	PasswordErrorType type;
 
-	public PasswordValidationError() {
+	public PasswordValidationException() {
 		
 	}
 
@@ -15,25 +15,13 @@ public class PasswordValidationError extends Exception {
 	 * @param type
 	 * @param message
 	 */
-	public PasswordValidationError(PasswordErrorType type, String message) {
+	public PasswordValidationException(PasswordErrorType type, String message) {
 		
 		super(message);
 		this.type = type;
 		
 	}
 
-	/**
-	 * 
-	 * @param type
-	 * @param cause
-	 */
-	public PasswordValidationError(PasswordErrorType type, Throwable cause) {
-		
-		super(cause);
-		this.type =type;
-		
-	}
-	
 	/**
 	 * 
 	 * @return type

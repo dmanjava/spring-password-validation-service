@@ -7,19 +7,23 @@ public class PasswordValidationResult implements IPasswordValidationResult {
 	/**
 	 * The password 
 	 */
-	IPassword password;
+	private IPassword password;
 	
-	ArrayList<PasswordErrorType> passwordErrorTypes;
+	private PasswordErrorType passwordErrorType;
 	
+	private String passwordErrorMessage;
 	
 	/**
 	 * 
 	 * @param password
 	 */
-	public PasswordValidationResult( IPassword password) {
+	public PasswordValidationResult( IPassword password,
+			String message,
+			PasswordErrorType type) {
 		super();
 		this.password = password;
-		this.passwordErrorTypes = new ArrayList<PasswordErrorType>();
+		this.passwordErrorMessage = message;
+		this.passwordErrorType = type;
 	}
 
 	/**
@@ -39,43 +43,16 @@ public class PasswordValidationResult implements IPasswordValidationResult {
 	/**
 	 * @return the passwordErrorType
 	 */
-	public ArrayList<PasswordErrorType> getPasswordErrorTypes() {
-		return passwordErrorTypes;
+	public PasswordErrorType getPasswordErrorType() {
+		return this.passwordErrorType;
 	}
 
 	/**
-	 * @param passwordErrorType the passwordErrorType to set
-	 */
-	public void setPasswordErrorTypes(ArrayList<PasswordErrorType> passwordErrorTypes) {
-		this.passwordErrorTypes = passwordErrorTypes;
-	}
-
-	/* (non-Javadoc)
-	 * @see com.whitaker.models.IPasswordValidationResult#addPasswordErrorType(com.whitaker.models.PasswordErrorType)
+	 * @return the pass word message
 	 */
 	@Override
-	public boolean addPasswordErrorType(PasswordErrorType errortype) {
-		return this.passwordErrorTypes.add(errortype);		
-	}
-
-	/* (non-Javadoc)
-	 * @see com.whitaker.models.IPasswordValidationResult#removePasswordErrorType(com.whitaker.models.PasswordErrorType)
-	 */
-	@Override
-	public boolean removePasswordErrorType(PasswordErrorType errortype) {
-		return this.passwordErrorTypes.remove(errortype);
-		
+	public String getPasswordErrorMessage() {
+		return this.passwordErrorMessage;
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 }
