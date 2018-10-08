@@ -1,26 +1,29 @@
 package com.whitaker.models;
 
+import java.util.ArrayList;
+
 public class PasswordValidationResult implements IPasswordValidationResult {
 	
 	/**
 	 * The password 
 	 */
-	IPassword password;
+	private IPassword password;
 	
-	PasswordErrorType passwordErrorType;
+	private PasswordErrorType passwordErrorType;
 	
-	
-	public PasswordValidationResult() {
-		// TODO Auto-generated constructor stub
-	}
+	private String passwordErrorMessage;
 	
 	/**
 	 * 
 	 * @param password
 	 */
-	public PasswordValidationResult( IPassword password) {
+	public PasswordValidationResult( IPassword password,
+			String message,
+			PasswordErrorType type) {
 		super();
 		this.password = password;
+		this.passwordErrorMessage = message;
+		this.passwordErrorType = type;
 	}
 
 	/**
@@ -41,22 +44,15 @@ public class PasswordValidationResult implements IPasswordValidationResult {
 	 * @return the passwordErrorType
 	 */
 	public PasswordErrorType getPasswordErrorType() {
-		return passwordErrorType;
+		return this.passwordErrorType;
 	}
 
 	/**
-	 * @param passwordErrorType the passwordErrorType to set
+	 * @return the pass word message
 	 */
-	public void setPasswordErrorType(PasswordErrorType passwordErrorType) {
-		this.passwordErrorType = passwordErrorType;
+	@Override
+	public String getPasswordErrorMessage() {
+		return this.passwordErrorMessage;
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-
 }

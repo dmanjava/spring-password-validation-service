@@ -2,6 +2,7 @@ package com.whitaker.models;
 
 public enum PasswordErrorType {
 	
+	NULL_PASSWORD_ERROR,
 	LENGTH_VALIDATION_ERROR,
 	CHARACTER_VALIDATION_ERROR,
 	NUMERIC_VALIDATION_ERROR,
