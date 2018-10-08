@@ -13,7 +13,7 @@ public abstract class ValidationService implements IValidationService {
 	/**
 	 * the error message for null password
 	 */
-	static final String NULL_PASSWORD = "Null Password";
+	static final String NULL_PASSWORD = "Null Password.";
 	
 	
 	private IPassword password;

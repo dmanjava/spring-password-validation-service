@@ -12,27 +12,36 @@ import com.whitaker.models.PasswordErrorType;
 import com.whitaker.models.PasswordValidationException;
 import com.whitaker.models.PasswordValidationResult;
 
+/**
+ * 
+ * @author Darnell Whitaker
+ *
+ *         - 2 Validation rules - password cannot be less than 5 character
+ * 
+ *         - password cannot be more
+ */
+
 public class LengthValidationService extends ValidationService implements ILengthValidationService {
 
 	/**
 	 * to short message
 	 */
-	static final String TO_SHORT = "Password must be at least 5 characters long.";
+	public static final String TO_SHORT = "Password must be at least 5 characters long.";
 
 	/**
 	 * to long message
 	 */
-	static final String TO_LONG = "Password cannot be longer than 12 characters.";
+	public static final String TO_LONG = "Password cannot be longer than 12 characters.";
 
 	/**
 	 * the minimum password length
 	 */
-	static final int MIN_LENGTH = 5;
+	public static final int MIN_LENGTH = 5;
 
 	/**
 	 * the maximum password length
 	 */
-	static final int MAX_LENGTH = 12;
+	public static final int MAX_LENGTH = 12;
 
 	public LengthValidationService(IPassword password) throws PasswordValidationException {
 		super(password);
@@ -57,39 +66,38 @@ public class LengthValidationService extends ValidationService implements ILengt
 	}
 
 	public static void main(String[] args) {
-		BufferedReader reader =
-                new BufferedReader(new InputStreamReader(System.in));
-				String pwordtext = null;
-				ArrayList<IPasswordValidationResult> results;
-				System.out.println("Enter a password to validate...");
+		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+		String pwordtext = null;
+		ArrayList<IPasswordValidationResult> results;
+		System.out.println("Enter a password to validate...");
+		try {
+			while (pwordtext == null) {
+				pwordtext = reader.readLine();
+				System.out.println("Got Password: " + pwordtext);
+
+				// let's do our length validation
+				IPassword pword = new Password(pwordtext);
 				try {
-					while( pwordtext == null ) {
-						pwordtext = reader.readLine();
-						System.out.println("Got Password: " + pwordtext);
-						
-						// let's do our length validation
-						IPassword pword = new Password(pwordtext);
-						try {
-							// create our length service
-							ILengthValidationService lservice = new LengthValidationService(pword);
-							results = lservice.validateLength();
-							for (int i = 0; i < results.size(); i++) {
-								IPasswordValidationResult r = results.get(i);
-								System.out.println("Got " + results.size() + " error(s) with message \n\t - " + r.getPasswordErrorMessage());
-							}
-							System.out.println("Finished... OK");
-						} catch (PasswordValidationException e) {
-							System.out.println(e.getMessage());
-						} finally {
-							System.exit(0);
-						}
+					// create our length service and do validation
+					ILengthValidationService lservice = new LengthValidationService(pword);
+					results = lservice.validateLength();
+					for (int i = 0; i < results.size(); i++) {
+						IPasswordValidationResult r = results.get(i);
+						System.out.println("Got " + results.size() + " error(s) with message \n\t - "
+								+ r.getPasswordErrorMessage());
 					}
-					
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					System.out.println("Finished... OK");
+				} catch (PasswordValidationException e) {
+					System.out.println(e.getMessage());
+				} finally {
+					System.exit(0);
 				}
-				
+			}
+
+		} catch (IOException e) {
+			System.out.println("IOException Occurred.");
+			e.printStackTrace();
+		}
 
 	}
 

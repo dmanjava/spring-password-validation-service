@@ -3,6 +3,8 @@
  */
 package com.whitaker.service;
 
+import java.util.ArrayList;
+
 import com.whitaker.models.IPassword;
 import com.whitaker.models.IPasswordValidationResult;
 import com.whitaker.models.PasswordValidationException;
@@ -18,7 +20,7 @@ public interface ICharacterValidationService {
 	 * @param password
 	 * @return
 	 */
-	public IPasswordValidationResult validateAlphaCharacters( IPassword password ) throws PasswordValidationException;
+	public ArrayList<IPasswordValidationResult> validateCharacters() throws PasswordValidationException;
 	
 	
 	/**
@@ -26,6 +28,6 @@ public interface ICharacterValidationService {
 	 * @param password
 	 * @return
 	 */
-	public IPasswordValidationResult validateSequenceOfCharacters ( IPassword password ) throws PasswordValidationException;
+	public ArrayList<IPasswordValidationResult> validateSequenceOfCharacters () throws PasswordValidationException;
 
 }
