@@ -29,7 +29,7 @@ public class CharacterValidationService extends ValidationService implements ICh
 	 * not enough lowercase character message
 	 */
 	public static final String NOT_ENOUGH_LOWERCASE = "Password must contain at least" + " 1 lowercase and"
-			+ " 1 numberic character.";
+			+ " 1 numeric character.";
 
 	/**
 	 * invalid character sequence messages
@@ -103,7 +103,7 @@ public class CharacterValidationService extends ValidationService implements ICh
 				IPassword pword = new Password(pwordtext);
 				try {
 					// create our password pattern
-					IPasswordPattern pattern = new PasswordPattern(pword, PasswordPattern.LOWERCASE_REGEX_PATTERN);
+					IPasswordPattern pattern = new PasswordPattern(pword, PasswordPattern.FULL_REGEX_PATTERN);
 					// create our character servers and do validation
 					ICharacterValidationService cservice = new CharacterValidationService(pword, pattern);
 					results = cservice.validateCharacters();

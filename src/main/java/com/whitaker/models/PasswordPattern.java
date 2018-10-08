@@ -86,7 +86,7 @@ public class PasswordPattern implements IPasswordPattern {
 	 */
 	public static void main(String[] args) {
 		String patterntext = FULL_REGEX_PATTERN;
-		String passwordtext = "2SDFSDF";
+		String passwordtext = "2SDFFr";
 		try {
 			PasswordPattern pattern = new PasswordPattern(new Password(passwordtext), patterntext);
 			if(!pattern.matches()) {
