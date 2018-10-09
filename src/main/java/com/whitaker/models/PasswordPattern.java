@@ -4,6 +4,9 @@
 package com.whitaker.models;
 
 import java.util.regex.Pattern;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.regex.Matcher;
 
 /**
@@ -46,6 +49,7 @@ public class PasswordPattern implements IPasswordPattern {
 	/**
 	 * return the regex pattern
 	 */
+	@Autowired
 	@Override
 	public Pattern getPasswordPattern() {
 		return this.thePattern;
@@ -68,6 +72,7 @@ public class PasswordPattern implements IPasswordPattern {
 	/**
 	 * return the password to match the pattern against
 	 */
+	@Autowired
 	@Override
 	public IPassword getPassword() {
 		return this.password;

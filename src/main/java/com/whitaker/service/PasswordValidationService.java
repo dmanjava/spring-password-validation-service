@@ -3,6 +3,8 @@
  */
 package com.whitaker.service;
 
+import org.springframework.stereotype.Service;
+
 import com.whitaker.models.IPassword;
 import com.whitaker.models.IPasswordValidationResult;
 import com.whitaker.models.PasswordValidationException;
@@ -11,10 +13,18 @@ import com.whitaker.models.PasswordValidationException;
  * @author macadmin
  *
  */
+@Service
 public class PasswordValidationService extends ValidationService implements IPasswordValidationService {
 	
 	private ILengthValidationService lenghService;
 	private ICharacterValidationService characterService;
+	
+	/**
+	 * default constructor dude
+	 */
+	public PasswordValidationService() {
+		super();
+	}
 	
 	/**
 	 * 
@@ -25,6 +35,12 @@ public class PasswordValidationService extends ValidationService implements IPas
 		super(password);
 		this.lenghService = lengthservice;
 		this.characterService = characterservice;
+	}
+
+
+	public PasswordValidationService(IPassword password) throws PasswordValidationException {
+		super(password);
+		// TODO Auto-generated constructor stub
 	}
 
 

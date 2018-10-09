@@ -2,6 +2,8 @@ package com.whitaker.models;
 
 import java.util.ArrayList;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 public class PasswordValidationResult implements IPasswordValidationResult {
 	
 	/**
@@ -29,6 +31,7 @@ public class PasswordValidationResult implements IPasswordValidationResult {
 	/**
 	 * @return the password
 	 */
+	@Autowired
 	public IPassword getPassword() {
 		return password;
 	}
@@ -36,6 +39,7 @@ public class PasswordValidationResult implements IPasswordValidationResult {
 	/**
 	 * @param password the password to set
 	 */
+	@Autowired
 	public void setPassword(IPassword password) {
 		this.password = password;
 	}
@@ -43,6 +47,7 @@ public class PasswordValidationResult implements IPasswordValidationResult {
 	/**
 	 * @return the passwordErrorType
 	 */
+	@Autowired
 	public PasswordErrorType getPasswordErrorType() {
 		return this.passwordErrorType;
 	}
@@ -51,6 +56,7 @@ public class PasswordValidationResult implements IPasswordValidationResult {
 	 * @return the pass word message
 	 */
 	@Override
+	@Autowired
 	public String getPasswordErrorMessage() {
 		return this.passwordErrorMessage;
 	}
