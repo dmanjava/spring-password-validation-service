@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 
 public class DuplicateChecker implements IDuplicateChecker {
 	
@@ -52,6 +54,7 @@ public class DuplicateChecker implements IDuplicateChecker {
 		return this.hasDuplicates;
 	}
 	
+	@Autowired
 	public Map getDuplicates() {
 		return this.dups;
 	}

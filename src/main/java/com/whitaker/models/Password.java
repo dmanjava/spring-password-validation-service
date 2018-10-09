@@ -1,5 +1,7 @@
 package com.whitaker.models;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 public class Password implements IPassword {
 	
 	String password;
@@ -11,6 +13,7 @@ public class Password implements IPassword {
 	/**
 	 * return the password 
 	 */
+	@Autowired
 	public String getPasswordText() {
 		
 		return this.password;
@@ -19,6 +22,7 @@ public class Password implements IPassword {
 	/**
 	 * set the password
 	 */
+	@Autowired
 	public void setPasswordText(String password) {
 		this.password = password;
 
