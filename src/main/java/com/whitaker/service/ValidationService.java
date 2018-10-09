@@ -20,6 +20,10 @@ public abstract class ValidationService implements IValidationService {
 	private ArrayList<IPasswordValidationResult> validationResults;
 	
 
+	public ValidationService() {
+		super();
+	}
+	
 	/**
 	 * 
 	 * @param password
