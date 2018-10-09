@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
+import com.whitaker.models.DuplicateChecker;
+import com.whitaker.models.IDuplicateChecker;
 import com.whitaker.models.IPassword;
 import com.whitaker.models.IPasswordPattern;
 import com.whitaker.models.IPasswordValidationResult;
@@ -50,18 +52,27 @@ public class CharacterValidationService extends ValidationService implements ICh
 	private IPasswordPattern passwordPattern;
 	
 	/**
+	 *  This is our duplicate character checker
+	 */
+	private IDuplicateChecker duplicateChecker;
+	
+	/**
 	 * 
 	 * @param password
 	 * @throws PasswordValidationException
 	 */
 	public CharacterValidationService(IPassword password,
-			IPasswordPattern passwordpattern) throws PasswordValidationException {
+			IPasswordPattern passwordpattern, IDuplicateChecker dupchecker) throws PasswordValidationException {
 		super(password);
 		if(passwordpattern == null) {
 			throw new PasswordValidationException(PasswordErrorType.NULL_PATTERN_ERROR,
 					PasswordPattern.NULL_PATTERN);
 		}
 		this.passwordPattern = passwordpattern;
+		if(dupchecker == null) {
+			new PasswordValidationException(PasswordErrorType.NULL_DUP_CHECKER_ERROR,
+					DuplicateChecker.NULL_DUPLICATE_CHECKER);
+		}
 	}
 
 	@Override
@@ -104,8 +115,10 @@ public class CharacterValidationService extends ValidationService implements ICh
 				try {
 					// create our password pattern
 					IPasswordPattern pattern = new PasswordPattern(pword, PasswordPattern.FULL_REGEX_PATTERN);
+					// create our duplicate checker
+					IDuplicateChecker dcheck = new DuplicateChecker(pword);
 					// create our character servers and do validation
-					ICharacterValidationService cservice = new CharacterValidationService(pword, pattern);
+					ICharacterValidationService cservice = new CharacterValidationService(pword, pattern, dcheck);
 					results = cservice.validateCharacters();
 					for (int i = 0; i < results.size(); i++) {
 						IPasswordValidationResult r = results.get(i);
